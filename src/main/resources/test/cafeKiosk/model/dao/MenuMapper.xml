@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.cafeKiosk.model.dao.MenuMapper">
+
+    <resultMap id="menuResultMap" type="MenuDTO">
+        <id property="code" column="menu_code"/>
+        <result property="name" column="menu_name"/>
+        <result property="price" column="menu_price"/>
+        <result property="categoryCode" column="category_code"/>
+        <result property="orderableStatus" column="orderable_status"/>
+    </resultMap>
+
+
+    <select id="selectAllMenu" resultMap="menuResultMap">
+        select
+            m.menu_code,
+            m.menu_name,
+            m.menu_price,
+            m.category_code,
+            m.orderable_status
+        from
+            tbl_menu m
+<!--        where
+            m.orderable_status = 'Y'-->
+        order by
+            m.menu_code
+    </select>
+
+    <select id="selectMenuByCode" parameterType="_int" resultMap="menuResultMap">
+        select
+            m.menu_code,
+            m.menu_name,
+            m.menu_price,
+            m.category_code,
+            m.orderable_status
+        from
+            tbl_menu m
+        where
+            m.orderable_status = 'Y' and
+        menu_code = #{code}
+    </select>
+
+    <insert id="registMenu" parameterType="MenuDTO">
+        insert into tbl_menu (
+            menu_name,
+            menu_price,
+            category_code,
+            orderable_status
+        ) values (
+            #{ name },
+            #{ price },
+            #{ categoryCode },
+            'Y'
+        )
+    </insert>
+
+    <update id="modifyMenu" parameterType="MenuDTO">
+        update
+            tbl_menu
+            set
+            menu_name = #{ name },
+            menu_price = #{ price },
+            category_code = #{ categoryCode }
+        where
+             menu_code = #{ code }
+    </update>
+
+    <delete id="deleteMenu" parameterType="_int">
+        delete from
+            tbl_menu
+        where
+            menu_code = #{ code }
+    </delete>
+
+</mapper>
