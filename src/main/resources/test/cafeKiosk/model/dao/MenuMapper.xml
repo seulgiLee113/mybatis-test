@@ -39,7 +39,7 @@
         from
             tbl_menu m
         where
-            m.orderable_status = 'Y' and
+<!--            m.orderable_status = 'Y' and-->
         menu_code = #{code}
     </select>
 

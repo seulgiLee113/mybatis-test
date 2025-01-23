@@ -21,7 +21,7 @@ public class Application {
             System.out.println("4. 메뉴 수정");
             System.out.println("5. 메뉴 삭제");
 
-            System.out.print("[INFO] 메뉴 관리 번호를 입력하세요 : ");
+            System.out.print("메뉴 관리 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
             switch(no) {
@@ -30,7 +30,7 @@ public class Application {
                 case 3 : menuController.registMenu(inputMenu()); break;
                 case 4 : menuController.modifyMenu(inputModifyMenu()); break;
                 case 5 : menuController.deleteMenu(inputMenuCode()); break;
-                default : System.out.println("[WARN] 잘못된 메뉴를 선택하셨습니다."); break;
+                default : System.out.println("잘못된 메뉴를 선택하셨습니다."); break;
             }
 
         } while(true);
@@ -40,7 +40,7 @@ public class Application {
     private static Map<String, String> inputMenuCode() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("메뉴 코드를 입력하세요 : ");
+        System.out.print("메뉴 코드를 입력하세요 : ");
         String code = sc.nextLine();
 
         Map<String, String> parameter = new HashMap<>();
