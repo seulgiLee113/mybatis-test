@@ -20,6 +20,7 @@ public class Application {
             System.out.println("3. 신규 메뉴 추가");
             System.out.println("4. 메뉴 수정");
             System.out.println("5. 메뉴 삭제");
+            System.out.println("9. 프로그램 종료");
 
             System.out.print("메뉴 관리 번호를 입력하세요 : ");
             int no = sc.nextInt();
@@ -30,6 +31,8 @@ public class Application {
                 case 3 : menuController.registMenu(inputMenu()); break;
                 case 4 : menuController.modifyMenu(inputModifyMenu()); break;
                 case 5 : menuController.deleteMenu(inputMenuCode()); break;
+                case 9 :
+                    System.out.println("프로그램을 종료합니다."); return;
                 default : System.out.println("잘못된 메뉴를 선택하셨습니다."); break;
             }
 
